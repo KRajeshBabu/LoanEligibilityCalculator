@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <meta name = "viewport" content = "height=device-height, initial-scale=1.0">
+        <link rel = "stylesheet" href = "https://www.w3schools.com/w3css/4/w3.css">
+        <script src = "resources/scripts/cal.js"></script>
+        <title>Loan eligibility calculator</title>
+    </head>
+    <body>
+        <div id = "page">
+            <header id = "header" class = "w3-container w3-teal" style = "height:7vh">
+                <div>
+                    <p>
+                       Loan eligibility calculator
+                    </p>
+                </div>
+            </header>
+            <br>
+            <div id = "content" class = "w3-container" style = "height:88vh">
+                <!--########################################################################-->
+                <div id = "row1" class = "w3-row">
+                    <div class = "w3-col m3 w3-left">
+                        <!-- First m3 of content %-->
+                        <label for = "loanType">Loan type</label>
+                    </div>
+                    <div class = "w3-col m6 w3-left">
+                        <!-- First m6 of content %-->
+                        <select id = "loanType" name = "loanType" required>
+                            <option value = "" disabled selected hidden >Select loan type</option>
+                            <option value = "Home">Home</option>
+                            <option value = "Vehicle">Vehicle</option>
+                          </select>
+                    </div>
+                    <div class = "w3-col m3">
+                        <!-- Second m3 of content %-->
+                    </div>
+                </div>
+                <br>
+                <!--########################################################################-->
+                <div id = "row2" class = "w3-row">
+                    <div class = "w3-col m3 w3-left">
+                        <!-- Second m3 of content %-->
+                        <label for = "jobType">Employement type</label>
+                    </div>
+                    <div class = "w3-col m6 w3-left">
+                        <!-- Second m6 of content %-->
+                        <select id = "jobType" name = "jobType" required>
+                            <option value = "" disabled selected hidden>Select employement type</option>
+                            <option value = "Government">Government</option>
+                            <option value = "Private">Private</option>
+                          </select>
+                    </div>
+                    <div class = "w3-col m3">
+                        <!-- Second m3 of content %-->
+                    </div>
+                </div>
+                <br>
+                <!--########################################################################-->
+                <div id = "row3" class = "w3-row">
+                    <div class = "w3-col m3 w3-left">
+                        <!-- Third m3 of content %-->
+                        <label for = "gender">Gender</label>
+                    </div>
+                    <div class = "w3-col m6 w3-left">
+                        <!-- Third m6 of content %-->
+                        <select id = "gender" name = "gender" required>
+                            <option value = "" disabled selected hidden>Select gender</option>
+                            <option value = "Male">Male</option>
+                            <option value = "Female">Female</option>
+                          </select>
+                    </div>
+                    <div class = "w3-col m3">
+                        <!-- Third m3 of content %-->
+                    </div>
+                </div>
+                <br>
+                <!--########################################################################-->
+                <div id = "row4" class = "w3-row">
+                    <div class = "w3-col m3 w3-left">
+                        <!-- Fourth m3 of content %-->
+                        <label for = "previousEMIS">Previous EMI's</label>
+                    </div>
+                    <div class = "w3-col m6 w3-left">
+                        <input type = "text" id = "preEmi" name = "preEmi" placeholder = "Previous EMI's">
+                    </div>
+                    <div class = "w3-col m3">
+                        <!-- Fourth m3 of content %-->
+                    </div>
+                </div>
+                <br>  
+                <!--########################################################################-->
+                <div id = "row5" class = "w3-row">
+                    <div class = "w3-col m3 w3-left">
+                        <!-- Fifth m3 of content %-->
+                        <label for = "NetSalary">Net salary</label>
+                    </div>
+                    <div class = "w3-col m6 w3-left">
+                        <input type = "text" id = "netSalary" name = "netSalary" placeholder = "Net salary">
+                    </div>
+                    <div class = "w3-col m3">
+                        <!-- Fifth m3 of content %-->
+                    </div>
+                </div>
+                <br>  
+                <!--########################################################################-->
+                <div id = "row6" class = "w3-row">
+                    <div class = "w3-col m3 w3-left">
+                        <!-- Sixth m3 of content %-->
+                        <div><p></p></div>
+                    </div>
+                    <div class = "w3-col m6 w3-left">
+                        <input type = "submit" id = "checkEligibility" name = "checkEligibility" value = "Check loan eligibility" onclick="eligibility()">
+                    </div>
+                    <div class = "w3-col m3">
+                        <!-- Sixth m3 of content %-->
+                    </div>
+                </div>
+                <br>  
+                <!--########################################################################-->
+                <div id = "row7" class = "w3-row">
+                    <div class = "w3-col m3 w3-left">
+                        <!-- Seventh m3 of content %-->
+                        <div><p></p></div>
+                    </div>
+                    <div class = "w3-col m6 w3-left">
+                        <textarea id = "eligibility" name = "eligibility" rows = "4" cols = "50" ></textarea>
+                    </div>
+                    <div class = "w3-col m3">
+                        <!-- Seventh m3 of content %-->
+                    </div>
+                </div>
+                <br>  
+                <!--########################################################################-->
+            </div>
+            <footer id = "footer" class = "w3-container w3-teal" style = "height:4vh">
+                <div>
+                    <p>
+                        This page is maintained by github @KRajeshBabu.
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
