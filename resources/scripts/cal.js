@@ -16,10 +16,13 @@ function getIntrest() {
     else {
         document.write("Invalid input");
     }
-    return intrest;
+    return intrest/1200;
 }
 
-function getMaxLoanPayout(employementType) {
+function getMaxLoanPayout(maxLoan) {
+    var eT = document.getElementById("jobType");
+    employementType = eT.options[eT.selectedIndex].text;
+
     if(employementType == "Government") {
         maxLoanPayout = maxLoan * 0.9;
     }
@@ -39,79 +42,78 @@ function getMaxLoan() {
     var e = document.getElementById("loanType");
     loanType = e.options[e.selectedIndex].text;
 
-    if(loanType == "Home") {
-        maxLoan = 360 * monthlySalary;
-    }
-    else if(loanType == "Vehicle") {
-        maxLoan = 12 * monthlySalary;
+    var t = document.getElementById("loanAmount");
+
+    if(t.value != "") {
+        maxLoan = t.value;
     }
     else {
-        document.write("Invalid input")
+        if(loanType == "Home") {
+            maxLoan = 72 * monthlySalary;
+        }
+        else if(loanType == "Vehicle") {
+            maxLoan = 24 * monthlySalary;
+        }
+        else {
+            document.write("Invalid input")
+        }
     }
-    return maxLoan;
+    return getMaxLoanPayout(maxLoan);
 }
 
 function getTenure() {
     var tenure;
     var loanType;
     var e = document.getElementById("loanType");
+    var t = document.getElementById("tenure");
     loanType = e.options[e.selectedIndex].text;
 
-    if(loanType == "Home") {
-        tenure = 360;
-    }
-    else if(loanType == "Vehicle") {
-        tenure = 84;
+    if(t.value != ""){
+        tenure = t.value;
     }
     else {
-        document.write("Invalid input")
+        if(loanType == "Home") {
+            tenure = 360;
+        }
+        else if(loanType == "Vehicle") {
+            tenure = 84;
+        }
+        else {
+            document.write("Invalid input")
+        }
     }
     return tenure;
 }
 
 function getProposedEMI() {
     // (LA * R * ( 1 + R )^N)/(( 1 + R)^N - 1)
-    //var l = document.getElementById("loanType");
-    //var loanType = l.options[l.selectedIndex].value;
     var LA = getMaxLoan();
-    //var LA = 360 * 132000;
-
-    //var g = document.getElementById("gender");
-    //var g2 = document.getElementById("gender");
-    //var gender = g2.options[g2.selectedIndex].text;
     var R = getIntrest();
-    //var R = 6.95;
-
     var N = getTenure();
-    //var N = 84;
+
     var N2 = Math.pow((1+R),N);
-    return ((LA * R * N2)/(N2 - 1))/12;
+    return ((LA * R * N2)/(N2 - 1)).toFixed(2);
 }
 
 function complexMath() {
     var LA = 47520000;
-    var R = 6.95;
-    var N = 360;
+    var R = 6.95/1200;
+    var N = 120;
     var N2 = Math.pow((1+R),N);
-    return ((LA * R * N2)/(N2 - 1))/12;
-}
-
-function complexMath2() {
-    var LA = 100000;
-    var R = 10;
-    var N = 12;
-    var N2 = Math.pow((1+R),N);
-    return ((LA * R * N2)/(N2 - 1))/12;
+    return ((LA * R * N2)/(N2 - 1)).toFixed(2);
 }
 
 function eligibility() {
-    document.getElementById('eligibility').value = getProposedEMI();
-}
+    //document.getElementById('eligibility').value = "Proposed EMI: " + getProposedEMI();
+    var proposedEMI = getProposedEMI();
+    var monthlySalary = document.getElementById("netSalary").value;
+    var previousEMI = document.getElementById("preEmi").value;
+    var tenure = getTenure();
 
-function test() {
-
-    var e = document.getElementById("gender");
-    var strUser = e.options[e.selectedIndex].text;
-
-    return strUser;
+    if((monthlySalary - previousEMI - proposedEMI) <= 25000) {
+        document.getElementById('eligibility').value = "As net income including other loans and current loan is lessthan 25000, loan can't be granted."
+    }
+    else {
+        document.getElementById('eligibility').value = "Loan can be granted with EMI " + getProposedEMI() + " for a tenure of " + tenure + " months."
+    }
 }
